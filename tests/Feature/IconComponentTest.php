@@ -9,7 +9,7 @@ class IconComponentTest extends TestCase
 {
     public function testPhone()
     {
-        $this->setDecorators(['fontAwesome:v5']);
+        $this->setDecorators(['font-awesome:v5']);
 
         $compare = [
             '<i class="fas fa-camera"></i>' => Icon::camera()->solid(),

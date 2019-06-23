@@ -24,7 +24,7 @@ class TestCase extends BaseTestCase
      * @var string[]
      */
     protected $decorators = [
-        'fontAwesome:v5'
+        'font-awesome:v5'
     ];
 
     protected function getPackageProviders($app)

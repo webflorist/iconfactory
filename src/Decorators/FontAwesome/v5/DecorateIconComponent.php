@@ -27,7 +27,7 @@ class DecorateIconComponent extends Decorator
      */
     public static function getGroupId()
     {
-        return 'fontAwesome:v5';
+        return 'font-awesome:v5';
     }
 
     /**
