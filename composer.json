@@ -1,0 +1,41 @@
+{
+    "name": "webflorist/iconfactory",
+    "description": "Convenient and powerful Icon-factory for Laravel 5.5 and later",
+    "authors": [
+        {
+            "name": "Gerald Buttinger",
+            "email": "gerald@code.florist"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~5.5",
+        "webflorist/htmlfactory": "1.1.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.5",
+        "gajus/dindent": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webflorist\\IconFactory\\": "src/",
+            "IconFactoryTests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/webflorist/htmlfactory",
+            "no-api": true
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webflorist\\IconFactory\\IconFactoryServiceProvider"
+            ],
+            "aliases": {
+                "Icon": "Webflorist\\IconFactory\\IconFactoryFacade"
+            }
+        }
+    }
+}
