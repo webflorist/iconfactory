@@ -7,7 +7,8 @@ use Icon;
 
 class IconComponentTest extends TestCase
 {
-    public function testCamera()
+
+    public function test_camera()
     {
         $compare = [
             '<i class="fas fa-camera"></i>' => Icon::camera()->solid(),
@@ -23,11 +24,29 @@ class IconComponentTest extends TestCase
             );
         }
     }
-    public function testCameraInMaterialDesign()
+
+    public function test_camera_in_material_design()
     {
         $this->assertHtmlEquals(
             '<i class="material-icons">camera</i>',
-            Icon::camera()->materialIcons()
+            Icon::camera()->fromMaterialIcons()
+        );
+    }
+
+    public function test_camera_in_material_design_via_mapping_in_config()
+    {
+        $this->config->set('iconfactory.icon_mappings', [
+            'phone' => 'material-icons'
+        ]);
+
+        $this->assertHtmlEquals(
+            '<i class="fas fa-camera"></i>',
+            Icon::camera()
+        );
+
+        $this->assertHtmlEquals(
+            '<i class="material-icons">phone</i>',
+            Icon::phone()
         );
     }
 

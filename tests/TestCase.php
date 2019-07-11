@@ -3,6 +3,7 @@
 namespace IconFactoryTests;
 
 use HtmlFactoryTests\Traits\AssertsHtml;
+use Illuminate\Contracts\Config\Repository;
 use Webflorist\HtmlFactory\HtmlFactoryFacade;
 use Webflorist\HtmlFactory\HtmlFactoryServiceProvider;
 use Webflorist\IconFactory\IconFactoryFacade;
@@ -19,13 +20,9 @@ class TestCase extends BaseTestCase
     use AssertsHtml;
 
     /**
-     * Array of group-IDs of decorators, that should be loaded.
-     *
-     * @var string[]
+     * @var Repository
      */
-    protected $decorators = [
-        'font-awesome:v5'
-    ];
+    protected $config;
 
     protected function getPackageProviders($app)
     {
@@ -45,8 +42,7 @@ class TestCase extends BaseTestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('htmlfactory.decorators', $this->decorators);
-
+        $this->config = $app['config'];
     }
 
 

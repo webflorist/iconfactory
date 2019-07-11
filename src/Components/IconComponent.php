@@ -19,7 +19,7 @@ class IconComponent extends IElement
             [
                 'name' => $iconName,
                 'style' => 'solid',
-                'family' =>config('iconfactory.default_family')
+                'family' => $this->getDefaultIconFamily($iconName)
             ],
             'icon');
     }
@@ -87,7 +87,7 @@ class IconComponent extends IElement
      *
      * @return IconComponent
      */
-    public function fontAwesome(): IconComponent
+    public function fromFontAwesome(): IconComponent
     {
         $this->family('fa');
         return $this;
@@ -99,10 +99,32 @@ class IconComponent extends IElement
      *
      * @return IconComponent
      */
-    public function materialIcons(): IconComponent
+    public function fromMaterialIcons(): IconComponent
     {
         $this->family('material-icons');
         return $this;
     }
+
+    protected function beforeDecoration()
+    {
+
+    }
+
+    /**
+     * Returns default-icon-family for this icon.
+     *
+     * @param string $iconName
+     * @return string
+     */
+    private function getDefaultIconFamily(string $iconName)
+    {
+        $iconFamilyMapping = "iconfactory.icon_mappings.$iconName";
+        if (config()->has($iconFamilyMapping)) {
+            return config()->get($iconFamilyMapping);
+        }
+
+        return config('iconfactory.default_family');
+    }
+
 
 }

@@ -8,8 +8,21 @@ return [
     |--------------------------------------------------------------------------
     |
     | Set default-family-key to be used.
+    | (Defaults to FontAwesome fonts).
     |
     */
     'default_family' => 'fa',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Icon mappings
+    |--------------------------------------------------------------------------
+    |
+    | Map specific icons to specific families.
+    |
+    */
+    'icon_mappings' => [
+
+    ],
 
 ];
