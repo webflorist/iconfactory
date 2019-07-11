@@ -18,7 +18,8 @@ return [
     | Icon mappings
     |--------------------------------------------------------------------------
     |
-    | Map specific icons to specific families.
+    | Map specific icons to specific families
+    | (array of icon-name => family-key mappings).
     |
     */
     'icon_mappings' => [

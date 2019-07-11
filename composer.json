@@ -20,7 +20,10 @@
         "psr-4": {
             "Webflorist\\IconFactory\\": "src/",
             "IconFactoryTests\\": "tests/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "repositories": [
         {

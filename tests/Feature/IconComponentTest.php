@@ -4,6 +4,7 @@ namespace IconFactoryTests\Feature\Elements;
 
 use IconFactoryTests\TestCase;
 use Icon;
+use Webflorist\IconFactory\IconFactory;
 
 class IconComponentTest extends TestCase
 {
@@ -11,9 +12,9 @@ class IconComponentTest extends TestCase
     public function test_camera()
     {
         $compare = [
-            '<i class="fas fa-camera"></i>' => Icon::camera()->solid(),
+            '<i class="fas fa-camera"></i>' => icon_factory()->camera()->solid(),
             '<i class="far fa-camera"></i>' => Icon::camera()->regular(),
-            '<i class="fal fa-camera"></i>' => Icon::camera()->light(),
+            '<i class="fal fa-camera"></i>' => app(IconFactory::class)->camera()->light(),
             '<i class="fas fa-map-marker"></i>' => Icon::mapMarker(),
         ];
 
