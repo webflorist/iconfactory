@@ -12,10 +12,10 @@ class IconComponentTest extends TestCase
     public function test_camera()
     {
         $compare = [
-            '<i class="fas fa-camera"></i>' => icon_factory()->camera()->solid(),
-            '<i class="far fa-camera"></i>' => Icon::camera()->regular(),
-            '<i class="fal fa-camera"></i>' => app(IconFactory::class)->camera()->light(),
-            '<i class="fas fa-map-marker"></i>' => Icon::mapMarker(),
+            '<i class="fal fa-camera"></i>' => Icon::camera()->light(),
+            '<i class="fas fa-camera"></i>' => icon_factory('camera')->solid(),
+            '<i class="far fa-camera"></i>' => icon_factory()->camera()->regular(),
+            '<i class="fas fa-map-marker"></i>' => app(IconFactory::class)->mapMarker(),
         ];
 
         foreach ($compare as $expectedHtml => $icon) {
