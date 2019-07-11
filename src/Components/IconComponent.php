@@ -7,7 +7,6 @@ use Webflorist\HtmlFactory\Elements\IElement;
 class IconComponent extends IElement
 {
 
-
     /**
      * IconComponent constructor.
      *
@@ -19,7 +18,8 @@ class IconComponent extends IElement
         $this->payload(
             [
                 'name' => $iconName,
-                'style' => 'solid'
+                'style' => 'solid',
+                'family' =>config('iconfactory.default_family')
             ],
             'icon');
     }
@@ -37,7 +37,7 @@ class IconComponent extends IElement
     }
 
     /**
-     * Set Icon-Style to 'solid';
+     * Set Icon-Style to 'solid'.
      *
      * @return IconComponent
      */
@@ -48,7 +48,7 @@ class IconComponent extends IElement
     }
 
     /**
-     * Set Icon-Style to 'regular';
+     * Set Icon-Style to 'regular'.
      *
      * @return IconComponent
      */
@@ -59,13 +59,49 @@ class IconComponent extends IElement
     }
 
     /**
-     * Set Icon-Style to 'light';
+     * Set Icon-Style to 'light'.
      *
      * @return IconComponent
      */
     public function light(): IconComponent
     {
         $this->setIconStyle('light');
+        return $this;
+    }
+
+    /**
+     * Set the icon-family.
+     *
+     * @param string $family
+     * @return IconComponent
+     */
+    public function family(string $family): IconComponent
+    {
+        $this->payload($family, 'icon.family');
+        return $this;
+    }
+
+    /**
+     * Set the icon-family to 'fa'
+     * to use font-awesome-fonts.
+     *
+     * @return IconComponent
+     */
+    public function fontAwesome(): IconComponent
+    {
+        $this->family('fa');
+        return $this;
+    }
+
+    /**
+     * Set the icon-family to 'material-icons'
+     * to use Google's material design icon-fonts.
+     *
+     * @return IconComponent
+     */
+    public function materialIcons(): IconComponent
+    {
+        $this->family('material-icons');
         return $this;
     }
 

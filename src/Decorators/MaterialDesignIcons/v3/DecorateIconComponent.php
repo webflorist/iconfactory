@@ -1,6 +1,6 @@
 <?php
 
-namespace Webflorist\IconFactory\Decorators\FontAwesome\v5;
+namespace Webflorist\IconFactory\Decorators\MaterialDesignIcons\v3;
 
 use Illuminate\Support\Str;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException as PayloadNotFoundExceptionAlias;
@@ -19,7 +19,7 @@ class DecorateIconComponent extends IconComponentDecorator
      */
     public static function getIconFamily(): string
     {
-        return 'fa';
+        return 'material-icons';
     }
 
     /**
@@ -29,17 +29,7 @@ class DecorateIconComponent extends IconComponentDecorator
      */
     public function decorateIcon() : void
     {
-        $styleToClass = [
-            'solid' => 'fas',
-            'regular' => 'far',
-            'light' => 'fal'
-        ];
-
-        $this->element->addClasses([
-            $styleToClass[$this->element->getPayload('icon.style')],
-            'fa-' . Str::kebab($this->element->getPayload('icon.name'))
-        ]);
-
-
+        $this->element->addClass('material-icons');
+        $this->element->content($this->element->getPayload('icon.name'));
     }
 }

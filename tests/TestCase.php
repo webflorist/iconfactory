@@ -49,11 +49,5 @@ class TestCase extends BaseTestCase
 
     }
 
-    protected function setDecorators(array $decorators)
-    {
-        $this->decorators = $decorators;
-        $this->refreshApplication();
-    }
-
 
 }

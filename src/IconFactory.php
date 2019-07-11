@@ -58,7 +58,6 @@ class IconFactory
     public function __call($accessor, $arguments)
     {
         return new IconComponent($accessor);
-
     }
 
 }

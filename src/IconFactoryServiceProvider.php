@@ -16,9 +16,8 @@ class IconFactoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Register included decorators.
+        $this->publishConfig();
         $this->registerHtmlFactoryDecorators();
-
     }
 
     /**
@@ -28,10 +27,27 @@ class IconFactoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfig();
+        $this->registerService();
+    }
+
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__ . '/config/iconfactory.php' => config_path('iconfactory.php'),
+        ]);
+    }
+
+    protected function mergeConfig()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/config/iconfactory.php', 'iconfactory');
+    }
+
+    protected function registerService()
+    {
         $this->app->singleton(IconFactory::class, function () {
             return new IconFactory();
         });
-
     }
 
     /**
@@ -46,6 +62,10 @@ class IconFactoryServiceProvider extends ServiceProvider
         $htmlFactory->decorators->registerFromFolder(
             'Webflorist\IconFactory\Decorators\FontAwesome\v5',
             __DIR__ . '/Decorators/FontAwesome/v5'
+        );
+        $htmlFactory->decorators->registerFromFolder(
+            'Webflorist\IconFactory\Decorators\MaterialDesignIcons\v3',
+            __DIR__ . '/Decorators/MaterialDesignIcons/v3'
         );
     }
 
