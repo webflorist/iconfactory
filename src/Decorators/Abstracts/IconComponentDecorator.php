@@ -64,7 +64,7 @@ abstract class IconComponentDecorator extends Decorator
      */
     public final function decorate()
     {
-        if ($this->element->getPayload('icon.family') === $this::getIconFamily()) {
+        if ($this->element->payload->get('family') === $this::getIconFamily()) {
             $this->decorateIcon();
         }
 

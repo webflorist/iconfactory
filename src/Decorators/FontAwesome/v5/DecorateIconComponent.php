@@ -4,7 +4,6 @@ namespace Webflorist\IconFactory\Decorators\FontAwesome\v5;
 
 use Illuminate\Support\Str;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException as PayloadNotFoundExceptionAlias;
-use Webflorist\IconFactory\Components\IconComponent;
 use Webflorist\IconFactory\Decorators\Abstracts\IconComponentDecorator;
 
 class DecorateIconComponent extends IconComponentDecorator
@@ -36,8 +35,8 @@ class DecorateIconComponent extends IconComponentDecorator
         ];
 
         $this->element->addClasses([
-            $styleToClass[$this->element->getPayload('icon.style')],
-            'fa-' . Str::kebab($this->element->getPayload('icon.name'))
+            $styleToClass[$this->element->payload->get('style')],
+            'fa-' . Str::kebab($this->element->payload->get('name'))
         ]);
 
 

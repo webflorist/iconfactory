@@ -8,17 +8,6 @@ use Webflorist\HtmlFactory\HtmlFactory;
 
 class IconFactoryServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     * @throws DecoratorNotFoundExceptionAlias
-     */
-    public function boot()
-    {
-        $this->publishConfig();
-        $this->registerHtmlFactoryDecorators();
-    }
 
     /**
      * Register the application services.
@@ -31,23 +20,35 @@ class IconFactoryServiceProvider extends ServiceProvider
         $this->registerService();
     }
 
-    protected function publishConfig()
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     * @throws DecoratorNotFoundExceptionAlias
+     */
+    public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/config/iconfactory.php' => config_path('iconfactory.php'),
-        ]);
+        $this->publishConfig();
+        $this->registerHtmlFactoryDecorators();
     }
 
     protected function mergeConfig()
     {
         $this->mergeConfigFrom(__DIR__ . '/config/iconfactory.php', 'iconfactory');
     }
-
+    
     protected function registerService()
     {
         $this->app->singleton(IconFactory::class, function () {
             return new IconFactory();
         });
+    }
+
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__ . '/config/iconfactory.php' => config_path('iconfactory.php'),
+        ]);
     }
 
     /**

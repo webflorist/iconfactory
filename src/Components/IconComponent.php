@@ -3,6 +3,8 @@
 namespace Webflorist\IconFactory\Components;
 
 use Webflorist\HtmlFactory\Elements\IElement;
+use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
+use Webflorist\IconFactory\Payload\IconPayload;
 
 class IconComponent extends IElement
 {
@@ -11,28 +13,30 @@ class IconComponent extends IElement
      * IconComponent constructor.
      *
      * @param string $iconName
+     * @throws InvalidPayloadException
      */
     public function __construct(string $iconName)
     {
         parent::__construct();
-        $this->payload(
-            [
-                'name' => $iconName,
-                'style' => 'solid',
-                'family' => $this->getDefaultIconFamily($iconName)
-            ],
-            'icon');
+
+        // Set default payload for icons.
+        $iconPayload = new IconPayload();
+        $iconPayload->name = $iconName;
+        $iconPayload->style = 'solid';
+        $iconPayload->family = $this->getDefaultIconFamily($iconName);
+        $this->payload($iconPayload);
     }
 
     /**
-     * Set Icon-Style
+     * Set Icon-Style.
      *
      * @param string $style
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     protected function setIconStyle(string $style): IconComponent
     {
-        $this->payload($style, 'icon.style');
+        $this->payload($style, 'style');
         return $this;
     }
 
@@ -40,6 +44,7 @@ class IconComponent extends IElement
      * Set Icon-Style to 'solid'.
      *
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function solid(): IconComponent
     {
@@ -51,6 +56,7 @@ class IconComponent extends IElement
      * Set Icon-Style to 'regular'.
      *
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function regular(): IconComponent
     {
@@ -62,6 +68,7 @@ class IconComponent extends IElement
      * Set Icon-Style to 'light'.
      *
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function light(): IconComponent
     {
@@ -74,10 +81,11 @@ class IconComponent extends IElement
      *
      * @param string $family
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function family(string $family): IconComponent
     {
-        $this->payload($family, 'icon.family');
+        $this->payload($family, 'family');
         return $this;
     }
 
@@ -86,6 +94,7 @@ class IconComponent extends IElement
      * to use font-awesome-fonts.
      *
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function fromFontAwesome(): IconComponent
     {
@@ -98,6 +107,7 @@ class IconComponent extends IElement
      * to use Google's material design icon-fonts.
      *
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function fromMaterialIcons(): IconComponent
     {

@@ -30,6 +30,6 @@ class DecorateIconComponent extends IconComponentDecorator
     public function decorateIcon() : void
     {
         $this->element->addClass('material-icons');
-        $this->element->content($this->element->getPayload('icon.name'));
+        $this->element->content($this->element->payload->get('name'));
     }
 }
