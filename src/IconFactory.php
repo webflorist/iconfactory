@@ -2,6 +2,7 @@
 
 namespace Webflorist\IconFactory;
 
+use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
 use Webflorist\IconFactory\Components\IconComponent;
 
 /**
@@ -54,6 +55,7 @@ class IconFactory
      * @param $accessor
      * @param $arguments
      * @return IconComponent
+     * @throws InvalidPayloadException
      */
     public function __call($accessor, $arguments)
     {

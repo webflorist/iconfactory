@@ -2,8 +2,8 @@
 
 namespace IconFactoryTests\Feature\Elements;
 
-use IconFactoryTests\TestCase;
 use Icon;
+use IconFactoryTests\TestCase;
 use Webflorist\IconFactory\IconFactory;
 
 class IconComponentTest extends TestCase
@@ -26,6 +26,23 @@ class IconComponentTest extends TestCase
         }
     }
 
+    public function test_camera_in_regular_via_style_mapping_in_config()
+    {
+        $this->config->set('iconfactory.style_mappings', [
+            'phone' => 'regular'
+        ]);
+
+        $this->assertHtmlEquals(
+            '<i class="fas fa-camera"></i>',
+            Icon::camera()
+        );
+
+        $this->assertHtmlEquals(
+            '<i class="far fa-phone"></i>',
+            Icon::phone()
+        );
+    }
+
     public function test_camera_in_material_design()
     {
         $this->assertHtmlEquals(
@@ -34,9 +51,9 @@ class IconComponentTest extends TestCase
         );
     }
 
-    public function test_camera_in_material_design_via_mapping_in_config()
+    public function test_camera_in_material_design_via_family_mapping_in_config()
     {
-        $this->config->set('iconfactory.icon_mappings', [
+        $this->config->set('iconfactory.family_mappings', [
             'phone' => 'material-icons'
         ]);
 

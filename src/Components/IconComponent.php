@@ -20,11 +20,9 @@ class IconComponent extends IElement
         parent::__construct();
 
         // Set default payload for icons.
-        $iconPayload = new IconPayload();
-        $iconPayload->name = $iconName;
-        $iconPayload->style = 'solid';
-        $iconPayload->family = $this->getDefaultIconFamily($iconName);
-        $this->payload($iconPayload);
+        $this->payload(
+            (new IconPayload)->name($iconName)
+        );
     }
 
     /**
@@ -114,27 +112,5 @@ class IconComponent extends IElement
         $this->family('material-icons');
         return $this;
     }
-
-    protected function beforeDecoration()
-    {
-
-    }
-
-    /**
-     * Returns default-icon-family for this icon.
-     *
-     * @param string $iconName
-     * @return string
-     */
-    private function getDefaultIconFamily(string $iconName)
-    {
-        $iconFamilyMapping = "iconfactory.icon_mappings.$iconName";
-        if (config()->has($iconFamilyMapping)) {
-            return config()->get($iconFamilyMapping);
-        }
-
-        return config('iconfactory.default_family');
-    }
-
 
 }
