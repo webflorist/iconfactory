@@ -35,8 +35,8 @@ class DecorateIconComponent extends IconComponentDecorator
         ];
 
         $this->element->addClasses([
-            $styleToClass[$this->element->payload->get('style')],
-            'fa-' . Str::kebab($this->element->payload->get('name'))
+            $styleToClass[$this->element->payload->style],
+            'fa-' . Str::kebab($this->element->payload->name)
         ]);
 
 

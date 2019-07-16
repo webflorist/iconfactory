@@ -10,7 +10,7 @@
     "require": {
         "php": "~7.1",
         "laravel/framework": "~5.5",
-        "webflorist/htmlfactory": "1.1.*"
+        "webflorist/htmlfactory": "dev-develop"
     },
     "require-dev": {
         "orchestra/testbench": "~3.5",
