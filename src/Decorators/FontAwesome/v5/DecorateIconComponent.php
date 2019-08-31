@@ -39,6 +39,9 @@ class DecorateIconComponent extends IconComponentDecorator
             'fa-' . Str::kebab($this->element->payload->name)
         ]);
 
+        if (isset($this->element->payload->size)) {
+            $this->element->addClass('fa-'.$this->element->payload->size);
+        }
 
     }
 }

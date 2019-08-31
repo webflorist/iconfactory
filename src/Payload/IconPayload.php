@@ -39,6 +39,41 @@ class IconPayload extends Payload
     public $family;
 
     /**
+     * @var string
+     */
+    public $size;
+
+    /**
+     * @param string $style
+     * @return IconPayload
+     */
+    public function style(string $style): IconPayload
+    {
+        $this->style = $style;
+        return $this;
+    }
+
+    /**
+     * @param string $family
+     * @return IconPayload
+     */
+    public function family(string $family): IconPayload
+    {
+        $this->family = $family;
+        return $this;
+    }
+
+    /**
+     * @param string $size
+     * @return IconPayload
+     */
+    public function size(string $size): IconPayload
+    {
+        $this->size = $size;
+        return $this;
+    }
+
+    /**
      * Sets the default-icon-family for this icon.
      */
     private function setDefaultIconFamily()
